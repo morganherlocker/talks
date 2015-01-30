@@ -1,0 +1,270 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Helvetica';
+  letter-spacing:-5px;
+  background:#000;
+  background-size:100%;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em, a {
+  font-style:normal;
+  color:#19FF00;
+}
+
+a {
+  background: #34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow:0px 0px 5px rgba(0,0,0,0.2);
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), ti;
+    if (!s) return;
+    big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+    function go(n) {
+        big.current = n;
+        var i = 1e3, e = s[n], t = parseInt(e.dataset.timeToNext || 0, 10);
+        document.body.className = e.dataset.bodyclass || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+        while ((e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) && i >= 0) {
+            e.style.fontSize = (i -= 2) + 'px';
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++big.current % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+    function rev() { go(Math.max(0, --big.current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e) {
+            var x1 = e.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) big.current = parse_hash() || big.current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== big.current) go(c);
+    };
+    go(big.current);
+};
+</script></head>
+<body>
+
+<div><em>@morganherlocker</em> <br><br><i>github, twitter, etc.</i></div>
+
+<div><iframe src='https://www.mapbox.com/bites/00088/?embed=true' width='1000px' height='475px' frameborder="0"></iframe></div>
+
+<div><em>Turf</em></div>
+
+<div>http://<em>turf</em>js.org/</div>
+
+<div>Turf is a <em>geo analysis</em> engine</div>
+
+<div>Turf is like <em>maps minus the maps</em></div>
+
+<div>
+  (but you can put the results on a map)
+  <ul>
+    <li>mapbox.js</li>
+    <li>leaflet</li>
+    <li>d3</li>
+    <li>mapbox studio</li>
+    <li>qgis</li>
+    <li>etc</li>
+  </ul>
+</div>
+
+<div>
+  <h1>flexible</h1>
+  <ul>
+    <li>open</li>
+    <li>modular</li>
+    <li>runs everywhere</li>
+  </ul>
+</div>
+
+<div>
+  <h1>everywhere?</h1>
+  <ul>
+    <li>"the cloud"</li>
+    <li>browsers</li>
+    <li>your laptop</li>
+  </ul>
+</div>
+
+<div>these <em>slides</em></div>
+
+<div><iframe src='https://www.mapbox.com/bites/00090/?embed=true' width='1000px' height='475px' frameborder="0"></iframe></div>
+
+<div>GeoJSON</div>
+
+<div>GeoJSON is like <em>emojis for geo data</em></div>
+
+<div style="color:red;">♥‿♥</div>
+
+<div>what can it do?</div>
+
+<div><ul>
+  <li>buffers</li>
+  <li>meshing</li>
+  <li>smoothing</li>
+  <li>aggregation</li>
+  <li>contouring</li>
+</ul></div>
+
+<div><em>lots</em> of other stuff</div>
+
+<div>
+turf-isobands  
+turf-average  
+turf-bboxPolygon  
+turf-bearing  
+turf-bezier  
+turf-buffer  
+turf-center  
+turf-centroid  
+turf-combine  
+turf-concave  
+turf-convex  
+turf-count  
+turf-destination  
+turf-deviation  
+turf-distance  
+turf-envelope  
+turf-erase  
+turf-explode  
+turf-extent  
+turf-featurecollection  
+turf-filter  
+turf-flip  
+turf-grid  
+turf-hex  
+turf-inside  
+turf-intersect  
+turf-isClockwise  
+turf-aggregate  
+turf-isolines  
+turf-jenks  
+turf-kinks  
+turf-linestring  
+turf-max  
+turf-median  
+turf-merge  
+turf-midpoint  
+turf-min  
+turf-nearest  
+turf-planepoint  
+turf-point-on-surface  
+turf-point  
+turf-polygon  
+turf-quantile  
+turf-reclass  
+turf-remove  
+turf-sample  
+turf-simplify  
+turf-size  
+turf-square  
+turf-sum  
+turf-tag  
+turf-tin  
+turf-union  
+turf-variance  
+turf-within
+turf-line-distance
+turf-line-slice
+turf-along
+turf-meta
+turf-point-on-line</div>
+
+<div>realtime <em>walkability analysis</em></div>
+
+<div><iframe src='https://www.mapbox.com/bites/00084/?embed=true' width='1000px' height='475px' frameborder="0"></iframe></div>
+
+<div>scaling the analysis up with node.js</div>
+
+<div><iframe src='https://www.mapbox.com/bites/00086/?embed=true' width='1000px' height='475px' frameborder="0"></iframe></div>
+
+<div>automate processing so you can spend your time thinking not clicking</div>
+
+<div><img src="https://dl.dropbox.com/s/p2i0sn323wp44as/Screenshot%202015-01-13%2022.25.14.png?dl=0"></div>
+<div><img src="https://dl.dropboxusercontent.com/s/gudk6zv3unqxqlp/Screenshot%202015-01-13%2022.26.14.png?dl=0"></div>
+<div><img src="https://dl.dropbox.com/s/fpmsdq2abriz6yi/Screenshot%202015-01-13%2022.11.37.png?dl=0"></div>
+<div><img src="https://dl.dropbox.com/s/bzmxtfamjnt4xf5/Screenshot%202015-01-14%2018.30.06.png?dl=0"></div>
+
+<div>
+<em>Contributors</em>
+<br>
+morganherlocker
+tmcw
+jvrousseau
+lyzidiamond
+jrzimmerman
+atdrago
+chelm
+GarethShapiro
+danhanf
+jseppi
+justincy
+wilsaj
+djdmbrwsk
+zdavkeos
+</div>
+
+<div>@morganherlocker<hr>morgan@mapbox.com</div>
+
+</body>
