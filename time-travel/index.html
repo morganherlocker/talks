@@ -1,0 +1,173 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Monaco';
+  letter-spacing:-5px;
+  background:#162433;
+  background-size:100%;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em {
+  font-style:normal;
+  color:#70b7ff;
+  text-shadow: 8px 8px #c5e2ff, 16px 16px #e2f0ff;
+}
+
+strong {
+  font-style:normal;
+  color:  #ce8489;
+  text-shadow: 4px 4px #e1b5b8, 8px 8px #ebcdcf;
+}
+
+b {
+  font-style:normal;
+  color:  #f7f588;
+  text-shadow: 2px 2px #000, 10px 10px #f8f79f,11.2px 11.2px #000, 20px 20px #faf9b7, 20.8px 20.8px #000, 30px 30px #fbfbcf,30.5px 30.5px #000, 40px 40px #fdfde7, 60px 60px rgba(255,255,255,.1), 80px 80px rgba(255,255,255,.1), 100px 100px rgba(255,255,255,.1), 130px 130px rgba(255,255,255,.1), 150px 150px rgba(255,255,255,.1), 180px 180px rgba(255,255,255,.1);
+}
+
+.crime {
+  font-style:normal;
+  color:#ff6666;
+  text-shadow: 0px 18px #7f0000, 0px 36px #ffb2b2;
+}
+
+.ice {
+  font-style:normal;
+  color:#97FFFF;
+  text-shadow: 0px 18px #008080, 0px 36px #AFEEEE;
+}
+
+a {
+  background: #34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+iframe {
+  position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:90%; height:100%; border:none; margin:0; padding-left:5%; overflow:hidden; z-index:999999;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow: 10px 10px 10px rgba(0,0,0,1);
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), ti;
+    if (!s) return;
+    big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+    function go(n) {
+        big.current = n;
+        var i = 1e3, e = s[n], t = parseInt(e.dataset.timeToNext || 0, 10);
+        document.body.className = e.dataset.bodyclass || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+        while ((e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) && i >= 0) {
+            e.style.fontSize = (i -= 2) + 'px';
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++big.current % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+    function rev() { go(Math.max(0, --big.current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e) {
+            var x1 = e.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) big.current = parse_hash() || big.current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== big.current) go(c);
+    };
+    go(big.current);
+};
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div><span class='ice'>@</span><strong>morganherlocker</strong></div>
+
+
+<div><em>Time</em> <strong>Travel</strong></div>
+<div><img src='http://cdn.sheknows.com/articles/2014/09/bill_and_ted_Future.png'></img></div>
+<div><strong>where</strong> <b>&</b> <em>when</em></div>
+<div><em>temporal</em> <strong>analysis</strong></div>
+<div>all geo data has a <em>temporal</em> dimension</div>
+<div><b>4D<i class="fa fa-arrows"></i></b></div>
+<div>...but it can be difficult to transport</div>
+<div>
+  <h1>options</h1>
+  <ul>
+    <li>gpx</li>
+    <li>expanded (shp, geojson, etc.)</li>
+  </ul>
+</div>
+<div>w/ a bit of cleverness, we can balance <em>simplicity</em> with <strong>power</strong></div>
+<div>the <strong>problem</strong></div>
+<div><em>time travel</em> is <strong>expensive</strong></div>
+<div>cheat <em>time</em> with <strong>data anchors</strong></div>
+<div><img src="https://38.media.tumblr.com/b98745eb565e85c79c4814165af6806f/tumblr_n7cfzxWpFL1tq2qiuo1_500.gif"></img>things that <strong>stay constant</strong> throughout <em>time</em></div>
+<div><strong>lines</strong> => <em>checkpoints</em></div>
+<div><img src='https://camo.githubusercontent.com/094ca959499e6def1868750d41d56a29b8c4e254/68747470733a2f2f646c2e64726f70626f7875736572636f6e74656e742e636f6d2f732f696f353467386c6671756b387865762f726f757465392e6769663f646c3d30'></img><em>interpolate the data in between recorded times</em></div>
+<div><strong>points</strong> =><em>grids</em></div>
+<div><img src='https://dl.dropbox.com/s/xohtqqd2t5xey4o/hail9.gif?dl=0'></img><strong>group data so you send less of it</strong></div>
+
+<div><b>examples</b></div>
+<div><p class='ice'>iditarod</p></div>
+<div><iframe src='https://www.mapbox.com/bites/00095/?embed=true' frameborder="0"></iframe></div>
+<div><p class='crime'>crime</p></div>
+<div><iframe src='https://www.mapbox.com/bites/00103/?embed=true' frameborder="0"></iframe></div>
+
+<div><strong>@morganherlocker</strong><hr><em>morgan@mapbox.com</em></div>
+</body>
