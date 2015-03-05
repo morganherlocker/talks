@@ -44,6 +44,12 @@ b {
   text-shadow: 0px 18px #008080, 0px 36px #AFEEEE;
 }
 
+.turf {
+  font-style:normal;
+  color:#61B329;
+  text-shadow: 0px 18px #3B5323;
+}
+
 a {
   background: #34d0e7;
   color:#000;
@@ -136,14 +142,14 @@ window.onload = function() {
 </head>
 <body>
 
-<div><span class='ice'>@</span><strong>morganherlocker</strong></div>
-
-
+<div><b>@</b><strong>morganherlocker</strong></div>
+<div><span class="turf">turfjs.org/</div>
+<div><img src="https://i.imgur.com/39AHyK6.png"></div>
 <div><em>Time</em> <strong>Travel</strong></div>
 <div><img src='http://cdn.sheknows.com/articles/2014/09/bill_and_ted_Future.png'></img></div>
-<div><strong>where</strong> <b>&</b> <em>when</em></div>
-<div><em>temporal</em> <strong>analysis</strong></div>
+<div><strong>where</strong><b>&</b> <em>when</em></div>
 <div>all geo data has a <em>temporal</em> dimension</div>
+<div><em>temporal</em> <strong>analysis</strong></div>
 <div><b>4D<i class="fa fa-arrows"></i></b></div>
 <div>...but it can be difficult to transport</div>
 <div>
@@ -160,8 +166,25 @@ window.onload = function() {
 <div><img src="https://38.media.tumblr.com/b98745eb565e85c79c4814165af6806f/tumblr_n7cfzxWpFL1tq2qiuo1_500.gif"></img>things that <strong>stay constant</strong> throughout <em>time</em></div>
 <div><strong>lines</strong> => <em>checkpoints</em></div>
 <div><img src='https://camo.githubusercontent.com/094ca959499e6def1868750d41d56a29b8c4e254/68747470733a2f2f646c2e64726f70626f7875736572636f6e74656e742e636f6d2f732f696f353467386c6671756b387865762f726f757465392e6769663f646c3d30'></img><em>interpolate the data in between recorded times</em></div>
+<div>
+  <h1>tools</h1>
+  <ul>
+    <li>turf.lineSlice</li>
+    <li>turf.lineLength</li>
+    <li>turf.along</li>
+  </ul>
+</div>
 <div><strong>points</strong> =><em>grids</em></div>
 <div><img src='https://dl.dropbox.com/s/xohtqqd2t5xey4o/hail9.gif?dl=0'></img><strong>group data so you send less of it</strong></div>
+<div>
+  <h1>tools</h1>
+  <ul>
+    <li>turf.squareGrid</li>
+    <li>turf.inside</li>
+    <li>turf.extent</li>
+    <li>JSONStream</li>
+  </ul>
+</div>
 
 <div><b>examples</b></div>
 <div><p class='ice'>iditarod</p></div>
