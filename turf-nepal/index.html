@@ -1,0 +1,188 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Monaco';
+  letter-spacing:-5px;
+  background:#162433;
+  background-size:100%;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em {
+  font-style:normal;
+  color:#70b7ff;
+  text-shadow: 8px 8px #c5e2ff, 16px 16px #e2f0ff;
+}
+
+strong {
+  font-style:normal;
+  color:  #ce8489;
+  text-shadow: 4px 4px #e1b5b8, 8px 8px #ebcdcf;
+}
+
+b {
+  font-style:normal;
+  color:  #f7f588;
+  text-shadow: 2px 2px #000, 10px 10px #f8f79f,11.2px 11.2px #000, 20px 20px #faf9b7, 20.8px 20.8px #000, 30px 30px #fbfbcf,30.5px 30.5px #000, 40px 40px #fdfde7, 60px 60px rgba(255,255,255,.1), 80px 80px rgba(255,255,255,.1), 100px 100px rgba(255,255,255,.1), 130px 130px rgba(255,255,255,.1), 150px 150px rgba(255,255,255,.1), 180px 180px rgba(255,255,255,.1);
+}
+
+.crime {
+  font-style:normal;
+  color:#ff6666;
+  text-shadow: 0px 18px #7f0000, 0px 36px #ffb2b2;
+}
+
+.ice {
+  font-style:normal;
+  color:#97FFFF;
+  text-shadow: 0px 18px #008080, 0px 36px #AFEEEE;
+}
+
+.turf {
+  font-style:normal;
+  color:#61B329;
+  text-shadow: 0px 18px #3B5323;
+}
+
+a {
+  background: #34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+iframe {
+  position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:90%; height:100%; border:none; margin:0; padding-left:5%; overflow:hidden; z-index:999999;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow: 10px 10px 10px rgba(0,0,0,1);
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), ti;
+    if (!s) return;
+    big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+    function go(n) {
+        big.current = n;
+        var i = 1e3, e = s[n], t = parseInt(e.dataset.timeToNext || 0, 10);
+        document.body.className = e.dataset.bodyclass || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+        while ((e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) && i >= 0) {
+            e.style.fontSize = (i -= 2) + 'px';
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++big.current % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+    function rev() { go(Math.max(0, --big.current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e) {
+            var x1 = e.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) big.current = parse_hash() || big.current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== big.current) go(c);
+    };
+    go(big.current);
+};
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div><b>@</b><strong>morganherlocker</strong></div>
+<div><em>Geographic analysis in</em> <strong>Nepal</strong></div>
+
+<div><em>Turf</em></div>
+
+<div>http://<em>turf</em>js.org/</div>
+
+<div>Turf is <em>GIS for the Web</em></div>
+
+<div>Turf manipulates map data</div>
+
+<div><em>TileReduce</em></div>
+
+<div>https://github.com/mapbox/tile-reduce</div>
+
+<div>TileReduce is<em> Turf at scale</em></div>
+
+<div>With simple analysis tools, we can write algorithms faster</div>
+
+<div><img src='https://farm8.staticflickr.com/7718/17302211712_54f13b1b12_b.jpg'></img></div>
+
+<div><img src='https://farm9.staticflickr.com/8723/17096621297_f9a4943777_b.jpg'></img></div>
+
+<div>We could add context to OpenStreetMap & USGS within hours</div>
+
+<div><img src='https://camo.githubusercontent.com/7967d3d6a22e1cf7b403a0cc2cc2d9026003fd83/687474703a2f2f692e696d6775722e636f6d2f343278526e50672e676966'></img></div>
+
+<div>This allows people on the ground to get the help they need</div>
+
+<div>100s of temporary shelters</div>
+
+<div><img src='https://dl.dropbox.com/s/tboioc88iuxl9bk/Screenshot%202015-05-07%2011.29.39.png?dl=0'></img></div>
+<div><img src='https://dl.dropbox.com/s/71k49ig9ywe0f14/Screenshot%202015-05-07%2011.30.10.png?dl=0'></img></div>
+
+<div><img src='https://dl.dropbox.com/s/ytwtraot9t824kv/Screenshot%202015-05-07%2011.30.36.png?dl=0'></img></div>
+<div><img src='https://dl.dropbox.com/s/go8m7t8ok63qdmh/Screenshot%202015-05-07%2011.30.47.png?dl=0'></img></div>
+
+<div>Kal Mochan Temple off the Bagmatti River</div>
+
+<div><img src='https://dl.dropbox.com/s/jvev57svp89oq8u/Screenshot%202015-05-07%2011.31.33.png?dl=0'></img></div>
+<div><img src='https://dl.dropbox.com/s/lt9giokn8j95h1g/Screenshot%202015-05-07%2011.32.45.png?dl=0'></img></div>
+
+<div><strong>@morganherlocker</strong><hr><em>morgan@mapbox.com</em></div>
+</body>
