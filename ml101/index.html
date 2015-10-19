@@ -1,0 +1,233 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Monaco';
+  letter-spacing:-5px;
+  background:#162433;
+  background-size:100%;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em {
+  font-style:italic;
+  color:#F0CDD1;
+  text-shadow: 4px 4px #c0a4a7;
+}
+.txt {
+  font-style:normal;
+  color:  #fff;
+}
+strong {
+  font-style:normal;
+  color:  #D7F6D0;
+  text-shadow: 4px 4px #96ac91;
+}
+b {
+  font-style:normal;
+  color:  #f7f588;
+  text-shadow: 2px 2px #000
+} 
+
+.ice {
+  font-style:normal;
+  color:#97FFFF;
+  text-shadow: 0px 18px #008080, 0px 36px #AFEEEE;
+}
+
+a {
+  background: #34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+iframe {
+  position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:90%; height:100%; border:none; margin:0; padding-left:5%; overflow:hidden; z-index:999999;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow: 10px 10px 10px rgba(0,0,0,1);
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), ti;
+    if (!s) return;
+    big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+    function go(n) {
+        big.current = n;
+        var i = 1e3, e = s[n], t = parseInt(e.dataset.timeToNext || 0, 10);
+        document.body.className = e.dataset.bodyclass || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+        while ((e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) && i >= 0) {
+            e.style.fontSize = (i -= 2) + 'px';
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++big.current % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+    function rev() { go(Math.max(0, --big.current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e) {
+            var x1 = e.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) big.current = parse_hash() || big.current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== big.current) go(c);
+    };
+    go(big.current);
+};
+</script>
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<div><em>@</em><strong>morganherlocker</strong></div>
+<div><strong>Geospatial</strong> <em>Machine Learning </em> </div>
+<div>machine learning is when programs <strong>get better</strong> at <em>guessing</em> things with <strong>more data</strong></div>
+<div><strong>testable</strong> predictions are a <em>requirement</em></div>
+<div>does this person have heart disease?</div>
+<div>
+ <ul>
+  <li>sex: male</li>
+  <li>age: 49</li>
+  <li>blood pressure: 120/139</li>
+  <li>number of dogs: 2</li>
+  <li>family history: yes</li>
+  <li>eye color: brown</li>
+ </ul>
+</div>
+<div>
+models start with <em>random</em> <strong>parameters</strong>
+</div>
+<div>
+they <strong>train</strong> by testing themselves against <em>known data</em>
+</div>
+<div><img src='robot_walk.gif'><strong>they tweak a parameter</strong> <em>when they are wrong</em></div>
+<div><strong>humans</strong> do this too</div>
+<div>humans <em>usually</em> give up after a <strong>few tries</strong></div>
+<div><img src='ape.gif'>humans can <em>pattern match</em> <strong>very quickly</strong></div>
+<div>machine learning is a set of tools</div>
+<div>
+different algorithms have different 
+ <ul>
+  <li>purposes</li>
+  <li>strengths</li>
+  <li>weaknesses</li>
+ <ul>
+</div>
+<div>the algorithms are fairly simple</div>
+<div>machine learning is about statistics, not magic</div>
+<div><img src='net.png'></div>
+<div><em>complexity</em> exists in the <strong>models</strong></div>
+<div><img src='dog_dream.png'></div>
+<div><img src='weather.gif'>What does this have to do with geo?</div>
+<div>
+ <ul>
+  <li><strong>mapping automation</strong> - lane detection, missing road detection, building tracing</li>
+  <li><strong>vandalism prevention</strong> - finding spam, bad edits, etc in OpenStreetMap</li>
+  <li><strong>fuzzy routing</strong> - multivariate ETA estimation</li>
+  <li><strong>urban planning</strong> - demographic projections</li>
+  <li><strong>data augmentation</strong> - fill in gaps of existing datasets with variable confidence</li>
+ </ul>
+</div>
+<div><img src='fruit.gif'>low hanging fruit</div>
+<div><strong>spatial</strong> is <em>(not)</em> special</div>
+<div>(that's a good thing)</div>
+<div>
+most geo problems are one of the following
+ <ul>
+  <li><strong>1 dimensional arrays - ANN</strong> - tabular data like demographics, economic numbers</li>
+  <li><strong>2d arrays - CNN</strong> - rasters, satellite imagery, drone imagery, videos</li>
+  <li><strong>sequential graphs - RNN</strong> - route planning, temporal vector data</strong></li>
+  <li><strong>language - BOW/skip-grams/tokenizing/W2V</strong> - geocoders, generalized natural search engines, spatial sentiment analysis, OSM commits</li>
+ </ul>
+</div>
+<div><img src='robot_door.gif'>real world</div>
+<div><img src='traces.png'>lane detection</div>
+<div><img src='osm_lanes.png'>OSM</div>
+<div><img src='profile.png'></div>
+<div>OSM changeset flagging</div>
+<div>
+<ul>
+<li>What the hell was this?</li>
+<li>Corrections of a lot of errors of a bad data import :-/</li>
+<li>Sort out some f***ing chaos</li>
+</ul>
+</div>
+<div><img src='spam.png'></div>
+
+<div>
+js tools
+ <ul>
+  <li>brain</li>
+  <li>node-fann</li>
+  <li>convnetjs</li>
+  <li>natural</li>
+  <li>sentiment</li>
+  <li>word2vec (cli)</li>
+  <li>caffe (cli)</li>
+ </ul>
+</div>
+<div><strong>@morganherlocker</strong><hr><em>morgan@mapbox.com</em></div>
+<div>
+credits
+ <ul>
+  <li>robot learning to walk - john goatstream</li>
+  <li>robot failing to open door - darpa</li>
+  <li>scary robot - boston dynamics</li>
+  <li>strawberry robot - nhk world</li>
+  <li>chimp memory puzzle - bbc</li>
+ </ul>
+</div>
+</body>
