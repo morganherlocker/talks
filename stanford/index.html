@@ -1,0 +1,215 @@
+<!DOCTYPE html><html><head><title></title><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /><style type='text/css'>
+body {
+  font-family: 'Arial';
+  letter-spacing:-5px;
+  background:#162433;
+  background-size:100%;
+  color:#fff;
+  margin:0;
+  padding:0;
+  font-weight:bold;
+}
+
+h1, h2, h3, p {
+  margin:0;
+}
+
+em {
+  font-style:italic;
+  color:#9BEFFA;
+  text-shadow: 4px 4px #58ACB8;
+}
+.txt {
+  font-style:normal;
+  color:  #fff;
+}
+strong {
+  font-style:normal;
+  color:  #fff;
+  text-shadow: 5px 5px #B560B2;
+}
+b {
+  font-style:normal;
+  color:  #f7f588;
+  text-shadow: 2px 2px #000
+} 
+
+.ice {
+  font-style:normal;
+  color:#97FFFF;
+  text-shadow: 0px 18px #008080, 0px 36px #AFEEEE;
+}
+
+a {
+  background: #34d0e7;
+  color:#000;
+  text-decoration:none;
+}
+
+img {
+  width:100%;
+}
+
+div {
+  cursor:pointer;
+  cursor:hand;
+  position:absolute;
+  top:0px;
+  left:0px;
+  padding:75px;
+  line-height:97%;
+}
+
+iframe {
+  position:fixed; top:0px; left:0px; bottom:0px; right:0px; width:90%; height:100%; border:none; margin:0; padding-left:5%; overflow:hidden; z-index:999999;
+}
+
+div.center {
+  text-align:center;
+}
+
+div.imageText {
+  text-shadow: 10px 10px 10px rgba(0,0,0,1);
+}
+</style><script type='text/javascript'>
+window.onload = function() {
+    var s = document.getElementsByTagName('div'), ti;
+    if (!s) return;
+    big = { current: 0, forward: fwd, reverse: rev, go: go, length: s.length };
+    function go(n) {
+        big.current = n;
+        var i = 1e3, e = s[n], t = parseInt(e.dataset.timeToNext || 0, 10);
+        document.body.className = e.dataset.bodyclass || '';
+        for (var k = 0; k < s.length; k++) s[k].style.display = 'none';
+        e.style.display = 'inline';
+        e.style.fontSize = i + 'px';
+        if (e.firstChild && e.firstChild.nodeName === 'IMG') {
+            document.body.style.backgroundImage = 'url(' + e.firstChild.src + ')';
+            e.firstChild.style.display = 'none';
+            if ('classList' in e) e.classList.add('imageText');
+        } else {
+            document.body.style.backgroundImage = '';
+            document.body.style.backgroundColor = e.style.backgroundColor;
+        }
+        if (ti !== undefined) window.clearInterval(ti);
+        if (t > 0) ti = window.setTimeout(fwd, (t * 1000));
+        while ((e.offsetWidth > window.innerWidth ||
+            e.offsetHeight > window.innerHeight) && i >= 0) {
+            e.style.fontSize = (i -= 2) + 'px';
+        }
+        e.style.marginTop = ((window.innerHeight - e.offsetHeight) / 2) + 'px';
+        if (window.location.hash !== n) window.location.hash = n;
+        document.title = e.textContent || e.innerText;
+    }
+    document.onclick = function() { go(++big.current % (s.length)); };
+    function fwd() { go(Math.min(s.length - 1, ++big.current)); }
+    function rev() { go(Math.max(0, --big.current)); }
+    document.onkeydown = function(e) {
+        if (e.which === 39 || e.which === 34 || e.which === 40) fwd();
+        if (e.which === 37 || e.which === 33 || e.which === 38) rev();
+    };
+    document.ontouchstart = function(e) {
+        var x0 = e.changedTouches[0].pageX;
+        document.ontouchend = function(e) {
+            var x1 = e.changedTouches[0].pageX;
+            if (x1 - x0 < 0) fwd();
+            if (x1 - x0 > 0) rev();
+        };
+    };
+    function parse_hash() {
+        return Math.max(Math.min(s.length - 1,
+            parseInt(window.location.hash.substring(1), 10)), 0);
+    }
+    if (window.location.hash) big.current = parse_hash() || big.current;
+    window.onhashchange = function() {
+        var c = parse_hash();
+        if (c !== big.current) go(c);
+    };
+    go(big.current);
+};
+</script>
+
+</head>
+<body>
+
+<div><em>@</em><strong>morganherlocker</strong></div>
+<div><img src='lanes.gif'><strong>Mapbox Drive</strong></div>
+
+<div><img src='fleets.gif'>fleets</div>
+<div><img src='phones.gif'>phones</div>
+
+<div><img src='ferry.gif'>collection</div>
+<div><img src='ferry.gif'></div>
+<div><img src='raw.png'>anonymization</div>
+<div><img src='raw.png'></div>
+<div><img src='clipped.png'></div>
+<div><img src='anonymized.png'></div>
+<div><img src='mixed.png'></div>
+<div><img src='lax.png'></div>
+<div><img src='transparency.png'></div>
+
+<div><img src='signal-noise.png'>signal/noise</div>
+<div><img src='noise.png'></div>
+<div><img src='signal.png'></div>
+
+<div><img src='walking-driving.png'>modality</div>
+<div><img src='walking.png'></div>
+<div><img src='driving.png'></div>
+
+<div><img src='us-cover.gif'>scale</div>
+<div><img src='us-cover.gif'></div>
+
+<div><img src='traffic.png'>traffic</div>
+<div><img src='vice-flow.png'>why do we need traffic data?</div>
+
+<div><img src='flow.png'></div>
+<div><img src='behavior.gif'></div>
+
+<div><img src='101.png'>what?</div>
+<div><img src='101.png'></div>
+
+<div><img src='matching.png'></div>
+
+<div><img src='speed-map.png'></div>
+
+<div><img src='highway-hist.gif'>how?</div>
+<div><img src='highway-hist.gif'></div>
+
+<div><img src='graph-oak.png'></div>
+
+<div><img src='hist.png'>estimation</div>
+<div><img src='hist.png'></div>
+
+<div><img src='freeflow.png'>freeflow</div>
+<div><img src='constrained.png'>constrained</div>
+<div><img src='freeflow.png'></div>
+<div><img src='constrained.png'></div>
+<div><img src='live.png'>live</div>
+
+<div><img src='random.png'>qa</div>
+<div><img src='r-2.png'></div>
+<div><img src='mbx-sfo-flat.png'></div>
+<div><img src='mbx-sfo.png'></div>
+<div><img src='oak-freemont.png'></div>
+<div><img src='comparison.png'></div>
+<div><img src='alts-map.png'></div>
+<div><img src='alts-routes.png'></div>
+
+<div><img src='intersection.png'>turns</div>
+<div><img src='intersection.png'></div>
+<div><img src='turn-hate.png'></div>
+<div><img src='breaking.png'></div>
+<div><img src='sfo.png'>missing streets</div>
+<div><img src='sfo.png'></div>
+<div><img src='missing.png'></div>
+<div><img src='heading.png'>oneways</div>
+<div><img src='heading.png'></div>
+<div><img src='lanes.png'>lanes</div>
+<div><img src='bisect.gif'></div>
+<div><img src='lanes.png'></div>
+
+
+
+<div><strong>@morganherlocker</strong><hr><em>morgan@mapbox.com</em></div>
+
+</body>
